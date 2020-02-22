@@ -1,5 +1,7 @@
 from flask import Flask, render_template, url_for
 app = Flask(__name__)
+app.config[('SECRET_KEY')] = '9efff572d7b906f3d63a3880f73f7619'
+# go into the python repl and import secrets then generate a secret key
 
 
 posts = [
