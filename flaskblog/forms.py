@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from flaskblog.models import User
 
 # We need to set a secret to protect from csf attacks and modifying cookies
 
@@ -13,6 +14,10 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[
                                      DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign up')
+    def validate_username(self, username):
+        
+        if True:
+            raise ValidationError
 
 
 class LoginForm(FlaskForm):
