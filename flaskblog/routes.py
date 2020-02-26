@@ -74,6 +74,10 @@ def logout():
     return redirect(url_for('home'))
 
 def save_picture_function(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    
 
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
