@@ -3,6 +3,8 @@ from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from flaskblog import app, db, bcrypt
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+import secrets
+import os
 
 posts = [
     {
@@ -71,6 +73,7 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+def save_picture_function(form_picture):
 
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
