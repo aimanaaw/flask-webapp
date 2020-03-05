@@ -141,4 +141,11 @@ def delete_post(post_id):
     flash('Your post has been deleted', 'success')
     return redirect(url_for('home'))
 
-    
+
+@app.route('/user/<str:username>')
+def user_post(username):
+    page = request.args.get('page', 1, type=int)
+    user = user.query.filter_by(username=username).first_or_404()
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+  # by adding additional arguments in the return render_template, we can pass additional data to the render file
+    return render_template('home.html', posts=posts)
