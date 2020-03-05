@@ -12,7 +12,7 @@ from PIL import Image
 @app.route('/home')
 def home():
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.paginate(per_page=5)
+    posts = Post.query.paginate(page=page, per_page=2)
   # by adding additional arguments in the return render_template, we can pass additional data to the render file
     return render_template('home.html', posts=posts)
 
